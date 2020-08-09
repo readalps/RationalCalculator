@@ -47,7 +47,7 @@ SFraction fractAdd(const SFraction& oL, const SFraction& oR)
         return oRslt;
     }
     /// having different denominator
-    u64 lcm = calcLestCommonMultiple(oL.denominator, oR.denominator);
+    u64 lcm = calcLeastCommonMultiple(oL.denominator, oR.denominator);
     oRslt.denominator = lcm;
     u64 numL = oL.numerator * (lcm / oL.denominator);
     u64 numR = oR.numerator * (lcm / oR.denominator);
@@ -103,7 +103,7 @@ u64 calcGreatestCommonDivisor(u64 valA, u64 valB)
     return (valA > valB ? calcGcdInn(valA, valB) : calcGcdInn(valB, valA));
 }
 
-u64 calcLestCommonMultiple(u64 valA, u64 valB)
+u64 calcLeastCommonMultiple(u64 valA, u64 valB)
 {
     return valA / calcGreatestCommonDivisor(valA, valB) * valB;
 }

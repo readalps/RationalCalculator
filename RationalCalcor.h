@@ -53,7 +53,7 @@ struct SFraction
 };
 
 u64 calcGreatestCommonDivisor(u64 valA, u64 valB);
-u64 calcLestCommonMultiple(u64 valA, u64 valB);
+u64 calcLeastCommonMultiple(u64 valA, u64 valB);
 void simplifyFraction(SFraction& oFract);
 
 struct SOperItem
