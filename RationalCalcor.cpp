@@ -372,14 +372,14 @@ EnumError CRationalCalcor::dealCharWhenExpectingNum(char ch)
 
 EnumError CRationalCalcor::calcIt()
 {
-    trimString(m_strFormula);
-    if (m_strFormula.empty())
+    trimString(m_strExpression);
+    if (m_strExpression.empty())
         return E_ERR_EMPTY;
     resetNum();
     EnumError eRet = E_ERR_OK;
-    for (size_t idx = 0; idx < m_strFormula.length(); ++idx)
+    for (size_t idx = 0; idx < m_strExpression.length(); ++idx)
     {
-        char ch = m_strFormula[idx];
+        char ch = m_strExpression[idx];
         if (ch == ' ' || ch == '\t')
             continue;
         if (ch == '(')
@@ -510,7 +510,7 @@ void CRationalCalcor::outputCalcDetail(size_t idx)
     }
     if (idx != 0)
     {
-        strDetail += m_strFormula.substr(idx);
+        strDetail += m_strExpression.substr(idx);
     }
     printf(" = %s\n", strDetail.c_str());
 }

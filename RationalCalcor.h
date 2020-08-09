@@ -96,7 +96,7 @@ enum EnumState {
 class CRationalCalcor
 {
 public:
-    CRationalCalcor(const std::string& strVal) {m_strFormula = strVal; m_eState = E_STATE_EXPECT_NUM; m_nParenLevel = 0;}
+    CRationalCalcor(const std::string& strVal) {m_strExpression = strVal; m_eState = E_STATE_EXPECT_NUM; m_nParenLevel = 0;}
     EnumError calcIt();
     EnumError getResult(SFraction& oVal);
 
@@ -112,7 +112,7 @@ private:
     EnumError reduceStack(char ch, size_t idx);
     void outputCalcDetail(size_t idx = 0);
 
-    std::string m_strFormula;
+    std::string m_strExpression;
     EnumState m_eState;
     int m_nParenLevel;
     std::stack<SOperItem> m_stkOpItem;
