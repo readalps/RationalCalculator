@@ -1,0 +1,94 @@
+Rational Calculator version 1.0 by Read Alps
+
+Hint: ` denotes the position where the repeating part of a recurring decimal starts.
+
+Please input a rational expression to calculate its value or input q to quit:
+
+ .`142857
+ = 1/7
+
+Please input a rational expression to calculate its value or input q to quit:
+
+ -(.6)
+ = 0 - ( 3/5 )
+ = -3/5
+
+Please input a rational expression to calculate its value or input q to quit:
+
+ +(-.6)
+ = ( -3/5 )
+ = -3/5
+
+Please input a rational expression to calculate its value or input q to quit:
+
+ 5/34*(-5+(-(7+6)))
+ = 5/34 *(-5+(-(7+6)))
+ = 5/34 * ( -5 + ( 0 - ( 13 )))
+ = 5/34 * ( -5 + ( -13 ))
+ = 5/34 * ( -18 )
+ = -2[11/17]
+
+Please input a rational expression to calculate its value or input q to quit:
+
+  .123`3
+ = 37/300
+
+Please input a rational expression to calculate its value or input q to quit:
+
+ .
+ = 0
+
+Please input a rational expression to calculate its value or input q to quit:
+
+ 5.1
+ = 5[1/10]
+
+Please input a rational expression to calculate its value or input q to quit:
+
+ 6+7.125*(16.25/3)-4*1/2+5.678
+ = 6 + 57/8 *(16.25/3)-4*1/2+5.678
+ = 6 + 57/8 * ( 65/4 /3)-4*1/2+5.678
+ = 6 + 57/8 * ( 65/12 )-4*1/2+5.678
+ = 6 + 1235/32 -4*1/2+5.678
+ = 1427/32 -4*1/2+5.678
+ = 1427/32 - 4 /2+5.678
+ = 1427/32 - 2 +5.678
+ = 1363/32 +5.678
+ = 1363/32 + 2839/500
+ = 48[1087/4000]
+
+Please input a rational expression to calculate its value or input q to quit:
+
+  20 / (5.5 - 1.1*5)
+ = 20 / ( 11/2 - 1.1*5)
+ = 20 / ( 11/2 - 11/10 *5)
+ = 20 / ( 11/2 - 11/2 )
+ = 20 / ( 0 )
+The expression can't be calculated when meeting zero denominator.
+
+Please input a rational expression to calculate its value or input q to quit:
+
+ 20 / (5.5 - 1.1*5 + 4)
+ = 20 / ( 11/2 - 1.1*5 + 4)
+ = 20 / ( 11/2 - 11/10 *5 + 4)
+ = 20 / ( 11/2 - 11/2 + 4)
+ = 20 / ( 0 + 4)
+ = 20 / ( 4 )
+ = 5
+
+Please input a rational expression to calculate its value or input q to quit:
+
+ 67+34*(23-78/(54*5))-2*(5/37-6.5789)
+ = 67 + 34 * ( 23 - 78 / ( 270 ))-2*(5/37-6.5789)
+ = 67 + 34 * ( 23 - 13/45 )-2*(5/37-6.5789)
+ = 67 + 34 * ( 1022/45 )-2*(5/37-6.5789)
+ = 67 + 34748/45 -2*(5/37-6.5789)
+ = 37763/45 -2*(5/37-6.5789)
+ = 37763/45 - 2 * ( 5/37 -6.5789)
+ = 37763/45 - 2 * ( 5/37 - 65789/10000 )
+ = 37763/45 - 2 * ( -2384193/370000 )
+ = 37763/45 - -2384193/185000
+ = 852[108737/1665000]
+
+Please input a rational expression to calculate its value or input q to quit:
+
