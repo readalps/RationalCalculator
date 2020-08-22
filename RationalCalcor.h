@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <string>
 #include <stack>
+#include <map>
+#include <vector>
 #include <sstream>
 
 typedef uint64_t u64;
@@ -28,28 +30,8 @@ struct SFraction
         bNegative = false;
     }
 
-    std::string toStr(bool bFinal = false) const
-    {
-        std::ostringstream oStream;
-        if (bNegative)
-        {
-            oStream << "-";
-        }
-        if (denominator == 1)
-        {
-            oStream << numerator;
-            return oStream.str();
-        }
-        if (!bFinal || numerator < denominator)
-        {
-            oStream << numerator << "/" << denominator;
-            return oStream.str();
-        }
-        u64 quotient = numerator / denominator;
-        u64 remainder = numerator % denominator;
-        oStream << quotient << "[" << remainder << "/" << denominator << "]";
-        return oStream.str();
-    }
+    std::string toStr(bool bFinal = false) const;
+    std::string toDecimalStr() const;
 };
 
 u64 calcGreatestCommonDivisor(u64 valA, u64 valB);
@@ -96,7 +78,12 @@ enum EnumState {
 class CRationalCalcor
 {
 public:
-    CRationalCalcor(const std::string& strVal) {m_strExpression = strVal; m_eState = E_STATE_EXPECT_NUM; m_nParenLevel = 0;}
+    CRationalCalcor(const std::string& strVal) {
+        m_strExpression = strVal;
+        m_eState = E_STATE_EXPECT_NUM;
+        m_nParenLevel = 0;
+        resetNum();
+    }
     EnumError calcIt();
     EnumError getResult(SFraction& oVal);
 
@@ -120,9 +107,9 @@ private:
 
     bool isDecimal() {return (m_nDigitSumAftDot != 0 || m_nDigitSumAftRec != 0);}
     void resetNum() {
+        m_bHavingVal = false;
         m_bNegative = false;
         m_ullIntPart = 0;
-        m_bHavingVal = false;
         m_bWithDot = false;
         m_bWithRecur = false;
         m_nDigitSumAftDot = 0;
@@ -131,9 +118,9 @@ private:
         m_ullValAftRec = 0;
     }
 
+    bool m_bHavingVal;
     bool m_bNegative;
     u64 m_ullIntPart;
-    bool m_bHavingVal;
     bool m_bWithDot;
     bool m_bWithRecur;
     int m_nDigitSumAftDot; // sum of digits after dot char(.)
@@ -141,3 +128,14 @@ private:
     u64 m_ullValAftDot;
     u64 m_ullValAftRec;
 };
+
+class CFraction2Decimal
+{
+public:
+    EnumError setFraction(const std::string& strInput);
+private:
+    u64 m_ullInt;
+    std::string m_strDecimal;
+    SFraction m_oFract;
+};
+

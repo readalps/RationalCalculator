@@ -19,6 +19,83 @@ void trimString(std::string& strTrim)
     }
 }
 
+std::string SFraction::toStr(bool bFinal) const
+{
+    std::ostringstream oStream;
+    if (bNegative)
+    {
+        oStream << "-";
+    }
+    if (denominator == 1)
+    {
+        oStream << numerator;
+        return oStream.str();
+    }
+    if (!bFinal)
+    {
+        oStream << numerator << "/" << denominator;
+        return oStream.str();
+    }
+    if (numerator < denominator)
+    {
+        oStream << numerator << "/" << denominator << " {" << toDecimalStr() << "}";
+        return oStream.str();
+    }
+    u64 quotient = numerator / denominator;
+    u64 remainder = numerator % denominator;
+    oStream << quotient << "[" << remainder << "/" << denominator << "] {" << toDecimalStr() << "}";
+    return oStream.str();
+}
+
+std::string SFraction::toDecimalStr() const
+{
+    std::ostringstream oStream;
+    if (bNegative)
+    {
+        oStream << "-";
+    }
+    u64 quotient = numerator / denominator;
+    oStream << quotient;
+    u64 remainder = numerator % denominator;
+    if (remainder == 0)
+    {
+        return oStream.str();
+    }
+    oStream << ".";
+    u64 pos = 0;
+    u64 posMatched = 0;
+    std::map<u64, u64> mapRemainderPos;
+    std::vector<u64> vecQuotient;
+    while (true)
+    {
+        mapRemainderPos[remainder] = pos++;
+        remainder *= 10;
+        vecQuotient.push_back(remainder / denominator);
+        remainder = remainder % denominator;
+        if (remainder == 0)
+            break;
+        std::map<u64, u64>::iterator it = mapRemainderPos.find(remainder);
+        if (it != mapRemainderPos.end())
+        {
+            posMatched = it->second;
+            break;
+        }
+    }
+    if (remainder == 0)
+    {
+        for (size_t idx = 0; idx < vecQuotient.size(); ++idx)
+            oStream << vecQuotient[idx];
+        return oStream.str();
+    }
+    size_t idx = 0;
+    for (; idx < posMatched; ++idx)
+        oStream << vecQuotient[idx];
+    oStream << "`";
+    for (; idx < vecQuotient.size(); ++idx)
+        oStream << vecQuotient[idx];
+    return oStream.str();
+}
+
 SFraction minusByZero(const SFraction& oVal)
 {
     SFraction oRet = oVal;
@@ -375,7 +452,6 @@ EnumError CRationalCalcor::calcIt()
     trimString(m_strExpression);
     if (m_strExpression.empty())
         return E_ERR_EMPTY;
-    resetNum();
     EnumError eRet = E_ERR_OK;
     for (size_t idx = 0; idx < m_strExpression.length(); ++idx)
     {

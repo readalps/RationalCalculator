@@ -29,7 +29,7 @@ void outputFract(const SFraction& oVal)
 
 int main(int argc, char* argv[])
 {
-    printf("Rational Calculator version 1.0 by Read Alps\n\n");
+    printf("Rational Calculator version 1.1 by Read Alps\n\n");
     printf("Hint: ` denotes the position where the repeating part of a recurring decimal starts.\n\n");
     while (true)
     {
